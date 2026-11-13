@@ -1,4 +1,4 @@
-# LedgerLite Project Requirements
+# MoneyBook Project Requirements
 
 **Goal**
 

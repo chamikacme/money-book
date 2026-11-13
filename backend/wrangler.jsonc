@@ -1,0 +1,21 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "moneybook-api",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-11-12",
+	"vars": {
+		"ENVIRONMENT": "production",
+		"ALLOWED_ORIGINS": "https://moneybook.chamikacme.com"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "moneybook-db",
+			"database_id": "3942b4db-78cf-4ea2-8686-c9eac1992540",
+			"migrations_dir": "migrations"
+		}
+	],
+	"observability": {
+		"enabled": true
+	}
+}
