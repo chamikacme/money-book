@@ -50,7 +50,11 @@ export function AppShell() {
   ));
   return <div className={`finance-app${collapsed ? " sidebar-collapsed" : ""}${dark ? " theme-dark" : ""}`}>
     <aside className="sidebar">
-      <Link to="/dashboard" className="brand"><span className="brand-mark"><Wallet size={18} /></span><span>MoneyBook</span></Link>
+      <Link to="/dashboard" className="brand" aria-label="MoneyBook home">
+        <img className="brand-logo-full brand-logo-light" src="/logo-light-horizontal.png" alt="MoneyBook" />
+        <img className="brand-logo-full brand-logo-dark" src="/logo-dark-horizontal.png" alt="" />
+        <img className="brand-logo-icon" src="/apple-touch-icon.png" alt="" />
+      </Link>
       <div className="nav-caption">WORKSPACE</div>
       <nav className="nav-group" aria-label="Main navigation">{renderLinks(navigation)}</nav>
       <div className="nav-caption nav-caption-tools">YOUR DATA</div>

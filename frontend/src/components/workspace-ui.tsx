@@ -4,6 +4,7 @@ import { ArrowDownLeft, ArrowUpRight, CircleHelp, Plus, type LucideIcon } from "
 import { PageActionsContext, PageFrame } from "./page-frame";
 import { Sheet, SheetTrigger } from "./ui/sheet-form";
 import { Card } from "./ui/card";
+import { Button } from "./ui/button";
 
 export function WorkspacePage({ title, description, page, children }: { title: string; description: string; page: string; children: ReactNode }) {
   return <div className={`workspace-page workspace-page--${page}`}><PageFrame title={title} description={description}><div className="workspace-content">{children}</div></PageFrame></div>;
@@ -12,6 +13,11 @@ export function WorkspacePage({ title, description, page, children }: { title: s
 export function PageAction({ label, onClick, icon: Icon = Plus }: { label: string; onClick: () => void; icon?: LucideIcon }) {
   const target = useContext(PageActionsContext);
   return target ? createPortal(<SheetTrigger onClick={onClick}><Icon size={15} />{label}</SheetTrigger>, target) : null;
+}
+
+export function PageActionButton({ label, onClick, icon: Icon, variant = "outline", className }: { label: string; onClick: () => void; icon?: LucideIcon; variant?: "default" | "outline" | "ghost"; className?: string }) {
+  const target = useContext(PageActionsContext);
+  return target ? createPortal(<Button variant={variant} className={className} onClick={onClick}>{Icon && <Icon size={15} />}{label}</Button>, target) : null;
 }
 
 export function EditSheet({ open, onOpenChange, title, description, children }: { open: boolean; onOpenChange: (value: boolean) => void; title: string; description: string; children: ReactNode }) {

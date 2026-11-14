@@ -22,9 +22,17 @@ const ShortcutsPage = lazy(() => import("./pages/utility-pages").then((module) =
 function ProtectedRoutes() {
   const location = useLocation();
   const { isLoaded, isSignedIn } = useAuth();
-  if (!isLoaded) return <div className="grid min-h-screen place-items-center text-slate-500">Loading…</div>;
+  if (!isLoaded) return <AppLoading label="Preparing your workspace" />;
   if (!isSignedIn) return <Navigate to={`/sign-in?redirect_url=${encodeURIComponent(location.pathname)}`} replace />;
   return <Outlet />;
 }
 
-export function AppRoutes() { return <Suspense fallback={<div className="route-loading" role="status">Loading MoneyBook…</div>}><Routes><Route path="/" element={<LandingPage />} /><Route path="/sign-in/*" element={<SignInPage />} /><Route path="/sign-up/*" element={<SignUpPage />} /><Route element={<ProtectedRoutes />}><Route element={<AppShell />}><Route path="/dashboard" element={<DashboardPage />} /><Route path="/accounts" element={<AccountsPage />} /><Route path="/accounts/:accountId/statement" element={<AccountStatementPage />} /><Route path="/categories" element={<CategoriesPage />} /><Route path="/transactions" element={<TransactionsPage />} /><Route path="/budgets" element={<BudgetsPage />} /><Route path="/goals" element={<GoalsPage />} /><Route path="/recurring" element={<RecurringPage />} /><Route path="/shortcuts" element={<ShortcutsPage />} /><Route path="/reports" element={<ReportsPage />} /><Route path="/journal" element={<JournalPage />} /><Route path="/settings" element={<SettingsPage />} /><Route path="/backup" element={<BackupPage />} /></Route></Route><Route path="*" element={<Navigate to="/" replace />} /></Routes></Suspense>; }
+function AppLoading({ label }: { label: string }) {
+  return <main className="app-loading" role="status" aria-live="polite">
+    <span className="app-loading-logo"><img src="/android-chrome-512x512.png" alt="" /></span>
+    <span className="app-loading-copy"><strong>MoneyBook</strong><span>{label}</span></span>
+    <span className="app-loading-track" aria-hidden="true"><i /></span>
+  </main>;
+}
+
+export function AppRoutes() { return <Suspense fallback={<AppLoading label="Loading MoneyBook" />}><Routes><Route path="/" element={<LandingPage />} /><Route path="/sign-in/*" element={<SignInPage />} /><Route path="/sign-up/*" element={<SignUpPage />} /><Route element={<ProtectedRoutes />}><Route element={<AppShell />}><Route path="/dashboard" element={<DashboardPage />} /><Route path="/accounts" element={<AccountsPage />} /><Route path="/accounts/:accountId/statement" element={<AccountStatementPage />} /><Route path="/categories" element={<CategoriesPage />} /><Route path="/transactions" element={<TransactionsPage />} /><Route path="/budgets" element={<BudgetsPage />} /><Route path="/goals" element={<GoalsPage />} /><Route path="/recurring" element={<RecurringPage />} /><Route path="/shortcuts" element={<ShortcutsPage />} /><Route path="/reports" element={<ReportsPage />} /><Route path="/journal" element={<JournalPage />} /><Route path="/settings" element={<SettingsPage />} /><Route path="/backup" element={<BackupPage />} /></Route></Route><Route path="*" element={<Navigate to="/" replace />} /></Routes></Suspense>; }

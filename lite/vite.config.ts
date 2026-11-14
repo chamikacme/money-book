@@ -9,17 +9,19 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["moneybook-lite.svg"],
+      includeAssets: ["favicon.ico", "apple-touch-icon.png", "android-chrome-192x192.png", "android-chrome-512x512.png", "logo-light-horizontal.png"],
       manifest: {
         name: "MoneyBook Lite",
-        short_name: "MoneyBook",
+        short_name: "MoneyBook Lite",
         description: "A quick view of your money and daily transactions",
-        theme_color: "#153f35",
+        theme_color: "#f6f7f3",
         background_color: "#f6f7f3",
         display: "standalone",
         start_url: "/",
+        scope: "/",
         icons: [
-          { src: "/moneybook-lite.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" },
+          { src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+          { src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png", purpose: "any" },
         ],
       },
     }),

@@ -9,7 +9,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["moneybook.svg"],
+      includeAssets: ["favicon.ico", "apple-touch-icon.png", "logo-light-horizontal.png", "logo-dark-horizontal.png"],
       manifest: {
         name: "MoneyBook",
         short_name: "MoneyBook",
@@ -18,7 +18,7 @@ export default defineConfig({
         background_color: "#f7f8fa",
         display: "standalone",
         start_url: "/",
-        icons: [{ src: "/moneybook.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" }]
+        icons: [{ src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png", purpose: "any" }]
       }
     })
   ],
