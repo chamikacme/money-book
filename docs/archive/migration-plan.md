@@ -1,5 +1,7 @@
 # MoneyBook Frontend/Backend Migration Plan
 
+> **Historical record.** This migration (Next.js monolith → separated React frontend, Hono backend, and D1) is complete. The `frontend/`, `backend/`, `lite/`, and `shared/` applications now exist. This document is retained for reference only; see [`docs/architecture.md`](../architecture.md) for the current architecture.
+
 ## Target architecture
 
 MoneyBook will be migrated from a Next.js monolith to two independently deployable applications:

@@ -1,5 +1,7 @@
 # Phase 1 Audit: Next.js to React + Hono + D1
 
+> **Historical record.** This audit records the pre-migration application behavior and is retained for reference only. The migration it describes is complete; see [`docs/architecture.md`](../architecture.md) for the current architecture.
+
 **Status:** Complete  
 **Scope:** Audit and behavior freeze only  
 **Runtime changes:** None

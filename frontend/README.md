@@ -19,4 +19,4 @@ Set `VITE_CLERK_PUBLISHABLE_KEY` in `.env.local` for local auth. For production 
 npm run deploy:production
 ```
 
-This builds the production SPA and uploads `dist/` to the Pages project `moneybook-web`. See [`../DEPLOYMENT.md`](../DEPLOYMENT.md) for the API, database, and domain cutover steps.
+This builds the production SPA and uploads `dist/` to the Pages project `moneybook-web`. See [`docs/deployment.md`](../docs/deployment.md) for the API, database, and domain cutover steps.
