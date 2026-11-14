@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Copy `.dev.vars.example` to `.dev.vars` and provide Clerk development keys before testing authenticated routes.
+Copy `.dev.vars.example` to `.dev.vars` and replace the Clerk placeholders with development credentials before testing authenticated routes. The example allows both local frontends (`localhost:5173` and `localhost:5174`).
 
 Public endpoint:
 
@@ -17,11 +17,16 @@ Public endpoint:
 GET /api/health
 ```
 
-Protected foundation endpoints:
+Protected application endpoints include:
 
 ```text
-GET  /api/auth/me
-POST /api/validation-check
+GET/POST/PATCH/DELETE /api/accounts
+GET/POST/PATCH/DELETE /api/categories
+GET/POST/PATCH/DELETE /api/transactions
+GET                   /api/dashboard
+GET                   /api/reports/*
+GET                   /api/backup/export
+POST                  /api/backup/import
 ```
 
-All future application routes must be registered after the authentication middleware in `src/index.ts` or mounted behind an equivalent protected router.
+The API also provides budgets, goals, recurring transactions, shortcuts, journal entries, and settings. All application routes are registered after Clerk authentication middleware in `src/index.ts`.

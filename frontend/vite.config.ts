@@ -9,19 +9,16 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["moneybook.svg", "moneybook-logo.svg"],
+      includeAssets: ["moneybook.svg"],
       manifest: {
         name: "MoneyBook",
         short_name: "MoneyBook",
-        description: "Simplified personal finance manager",
-        theme_color: "#4f46e5",
-        background_color: "#f8fafc",
+        description: "Personal finance, clearly accounted for.",
+        theme_color: "#24467d",
+        background_color: "#f7f8fa",
         display: "standalone",
         start_url: "/",
-        icons: [
-          { src: "/icon.png", sizes: "192x192", type: "image/png" },
-          { src: "/icon-512.png", sizes: "512x512", type: "image/png" }
-        ]
+        icons: [{ src: "/moneybook.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" }]
       }
     })
   ],

@@ -21,6 +21,7 @@ lite/node_modules/
 lite/dist/
 lite/.env
 lite/.env.local
+lite/.env.prod
 backend/.wrangler/
 backend/.dev.vars
 backend/.prod.vars

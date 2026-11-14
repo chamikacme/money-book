@@ -3,6 +3,8 @@ import { cors } from "hono/cors";
 const localOrigins = new Set([
   "http://localhost:5173",
   "http://127.0.0.1:5173",
+  "http://localhost:5174",
+  "http://127.0.0.1:5174",
 ]);
 
 export function appCors() {
