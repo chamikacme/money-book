@@ -5,7 +5,7 @@
 	"compatibility_date": "2026-11-12",
 	"vars": {
 		"ENVIRONMENT": "production",
-		"ALLOWED_ORIGINS": "https://moneybook.chamikacme.com"
+		"ALLOWED_ORIGINS": "https://moneybook.chamikacme.com,https://lite.moneybook.chamikacme.com"
 	},
 	"d1_databases": [
 		{

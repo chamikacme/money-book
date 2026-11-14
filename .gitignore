@@ -17,6 +17,10 @@ frontend/dist/
 frontend/node_modules/
 frontend/.env
 frontend/.env.prod
+lite/node_modules/
+lite/dist/
+lite/.env
+lite/.env.local
 backend/.wrangler/
 backend/.dev.vars
 backend/.prod.vars

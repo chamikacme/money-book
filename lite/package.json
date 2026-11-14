@@ -1,0 +1,35 @@
+{
+  "name": "moneybook-lite",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5174",
+    "build": "tsc -b && vite build",
+    "build:production": "node scripts/verify-production-env.mjs && tsc -b && vite build --mode production",
+    "deploy:production": "npm run build:production && wrangler pages deploy ./dist --project-name moneybook-lite --commit-dirty=true",
+    "preview": "vite preview --host 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@clerk/react": "^6.18.6",
+    "@tanstack/react-query": "^5.107.1",
+    "lucide-react": "^1.72.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router": "^7.9.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2",
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.1.0",
+    "wrangler": "4.161.0"
+  }
+}
