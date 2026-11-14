@@ -10,7 +10,7 @@
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"database_name": "moneybook-db",
+			"database_name": "moneybook_db",
 			"database_id": "3942b4db-78cf-4ea2-8686-c9eac1992540",
 			"migrations_dir": "migrations"
 		}

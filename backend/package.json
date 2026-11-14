@@ -12,7 +12,7 @@
     "test:watch": "vitest",
     "db:generate": "drizzle-kit generate",
     "db:migrate:local": "wrangler d1 migrations apply moneybook-db --local",
-    "db:migrate:remote": "wrangler d1 migrations apply moneybook-db --remote",
+    "db:migrate:remote": "wrangler d1 migrations apply moneybook_db --remote",
     "db:seed:local": "wrangler d1 execute moneybook-db --local --file=seeds/dev.sql",
     "data:transform": "node scripts/transform-postgres-export.mjs"
   },
