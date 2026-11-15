@@ -13,6 +13,8 @@ button, a { transition: background-color 160ms ease, color 160ms ease, border-co
 button { cursor: pointer; }
 button:disabled { cursor: wait; opacity: .5; }
 input, select { width: 100%; border: 1px solid #dedfd9; border-radius: 9px; padding: .72rem .8rem; color: var(--ink); background: #fff; font: inherit; outline: none; }
+select { appearance: none; padding-right: 2.35rem; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='m3.5 5.25 3.5 3.5 3.5-3.5' stroke='%23777984' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .8rem center; background-size: 14px; transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease; }
+select:hover { border-color: #b8c1bb; background-color: #fcfdfb; }
 input::placeholder { color: #a0a1a6; }
 input:focus, select:focus { border-color: #7aa087; box-shadow: 0 0 0 3px rgba(67,123,96,.12); }
 select option { background: #fff; }
@@ -366,6 +368,8 @@ html {
 .theme-dark .magic-main .bg-white { background-color:var(--surface)!important; }
 .theme-dark .magic-main .bg-slate-50,.theme-dark .magic-main .bg-slate-100 { background-color:var(--surface-soft)!important; }
 .theme-dark .magic-main .text-slate-950,.theme-dark .magic-main .text-slate-900,.theme-dark .magic-main .text-slate-800,.theme-dark .magic-main .text-slate-700 { color:var(--ink)!important; }
+.theme-dark select { border-color:#3a4756; color:var(--ink); background-color:var(--surface-soft); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='m3.5 5.25 3.5 3.5 3.5-3.5' stroke='%23a9b4c2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.theme-dark select:hover { border-color:#607086; background-color:#293543; }
 html.theme-dark .app-dialog-popup { border-color:#3a4756; color:#e7edf4; background:#1c2530; }
 html.theme-dark .app-dialog-icon { border-color:#3b4a5c; color:#b5c9e6; background:#263547; }
 html.theme-dark .app-dialog-icon.is-danger { border-color:#5a4046; color:#efa1a1; background:#3b2d34; }
@@ -497,6 +501,44 @@ html.theme-dark body { color-scheme:dark; }
 .theme-dark .sheet-body input:focus,.theme-dark .sheet-body select:focus { border-color:#8ba5c6; box-shadow:0 0 0 3px rgba(139,165,198,.16); }
 .theme-dark .sheet-body form>div:has(> .primary)>button:not(.primary) { border-color:#3a4756; color:#d5dde7; background:#232e3b; }
 .theme-dark .sheet-body form>div:has(> .primary)>button:not(.primary):hover { border-color:#536477; background:#29384a; }
+
+/* Keep sheet form actions visually aligned with workspace actions.
+   Sheets render in a body-level portal, so theme rules must be document-scoped. */
+.sheet-body form > button[type="submit"],
+.sheet-body form > .primary,
+.sheet-body form > div:has(> button[type="submit"]) > button[type="submit"],
+.sheet-body form > div:has(> .primary) > .primary {
+  display:inline-flex;
+  height:38px;
+  min-height:38px;
+  align-items:center;
+  justify-content:center;
+  padding:0 14px;
+  border:0;
+  border-radius:8px;
+  color:#fff;
+  background:var(--primary);
+  font:700 11px Manrope,ui-sans-serif,sans-serif;
+  box-shadow:0 2px 5px #1d31571f;
+}
+.sheet-body form > button[type="submit"]:hover,
+.sheet-body form > .primary:hover,
+.sheet-body form > div:has(> button[type="submit"]) > button[type="submit"]:hover,
+.sheet-body form > div:has(> .primary) > .primary:hover { color:var(--primary-foreground); background:var(--primary-hover); }
+html.theme-dark .sheet-body form > button[type="submit"],
+html.theme-dark .sheet-body form > .primary,
+html.theme-dark .sheet-body form > div:has(> button[type="submit"]) > button[type="submit"],
+html.theme-dark .sheet-body form > div:has(> .primary) > .primary {
+  color:var(--primary-foreground);
+  background:var(--primary);
+}
+html.theme-dark .sheet-body form > button[type="submit"]:hover,
+html.theme-dark .sheet-body form > .primary:hover,
+html.theme-dark .sheet-body form > div:has(> button[type="submit"]) > button[type="submit"]:hover,
+html.theme-dark .sheet-body form > div:has(> .primary) > .primary:hover {
+  color:var(--primary-foreground);
+  background:var(--primary-hover);
+}
 .finance-app.theme-dark [data-slot="button"][class*="border-border"] { border-color:#3a4756; }
 .finance-app.theme-dark [data-slot="button"][class*="border-border"]:hover:not(:disabled) { border-color:#536477; }
 .finance-app.theme-dark [data-slot="button"]:focus-visible { outline-color:#9bb8e866; }
@@ -633,4 +675,144 @@ html.theme-dark body { color-scheme:dark; }
 @media(max-width:760px){.auth-card-loading{padding:23px}}
 @media(max-width:380px){.auth-card-loading{padding:19px}}
 @media(prefers-reduced-motion:reduce){.auth-card-loading *{animation:none!important}}
+
+/* Consistent select controls, including sheet/card surfaces and dark mode. */
+.finance-app select,
+.finance-app .sheet-body select {
+  appearance:none;
+  padding-right:35px;
+  border:1px solid var(--line);
+  background-color:var(--surface);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='m3.5 5.25 3.5 3.5 3.5-3.5' stroke='%23777984' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 11px center;
+  background-size:14px;
+  cursor:pointer;
+}
+.finance-app select:hover { border-color:#b8c3d2; background-color:var(--surface-soft); }
+.finance-app.theme-dark select,
+.finance-app.theme-dark .sheet-body select {
+  border-color:var(--line);
+  color:var(--ink);
+  background-color:var(--surface-soft);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='m3.5 5.25 3.5 3.5 3.5-3.5' stroke='%23a9b4c2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.finance-app.theme-dark select:hover { border-color:#607086; background-color:#293543; }
+
+.dropdown-select { position:relative; z-index:1; width:100%; min-width:0; }
+.dropdown-select.is-open { z-index:90; }
+.dropdown-select-trigger { display:flex; width:100%; min-height:38px; align-items:center; justify-content:space-between; gap:12px; padding:0 11px; border:1px solid var(--line); border-radius:8px; color:var(--ink); background:var(--surface); font:600 11px Manrope,ui-sans-serif,sans-serif; text-align:left; cursor:pointer; transition:border-color 150ms ease,background-color 150ms ease,box-shadow 150ms ease; }
+.dropdown-select-trigger:hover,.dropdown-select.is-open .dropdown-select-trigger { border-color:#b8c3d2; background:var(--surface-soft); }
+.dropdown-select-trigger:focus-visible { outline:3px solid #6b8cc04a; outline-offset:2px; }
+.dropdown-select-trigger svg { flex:0 0 auto; color:var(--muted); transition:transform 150ms ease; }
+.dropdown-select.is-open .dropdown-select-trigger svg { transform:rotate(180deg); color:var(--accent); }
+.dropdown-select-trigger .is-placeholder { color:var(--muted); font-weight:500; }
+.dropdown-select-menu { position:absolute; z-index:100; top:calc(100% + 7px); right:0; left:0; display:grid; max-height:250px; overflow-y:auto; padding:5px; border:1px solid var(--line); border-radius:10px; background:#fff; box-shadow:0 14px 32px #17202f1c; isolation:isolate; animation:dropdown-select-enter 140ms ease-out; }
+.dropdown-select-option { display:flex; min-height:34px; align-items:center; justify-content:space-between; gap:12px; padding:0 9px; border:1px solid transparent; border-radius:6px; color:var(--muted); background:transparent; font:600 11px Manrope,ui-sans-serif,sans-serif; text-align:left; cursor:pointer; }
+.dropdown-select-option:hover,.dropdown-select-option.is-active { color:var(--ink); background:var(--surface-soft); }
+.dropdown-select-option.is-selected { color:var(--accent); }
+.dropdown-select-option.is-selected.is-active { border-color:#dbe5f3; background:var(--accent-soft); }
+.dropdown-select-option svg { flex:0 0 auto; color:var(--accent); }
+.dropdown-select-option:disabled { opacity:.45; cursor:not-allowed; }
+.dropdown-select.is-disabled { opacity:.55; }
+.dropdown-select.is-disabled .dropdown-select-trigger { cursor:not-allowed; }
+@keyframes dropdown-select-enter { from { opacity:0; transform:translateY(-4px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
+.finance-app.theme-dark .dropdown-select-trigger { border-color:var(--line); color:var(--ink); background:var(--surface-soft); }
+.finance-app.theme-dark .dropdown-select-trigger:hover,.finance-app.theme-dark .dropdown-select.is-open .dropdown-select-trigger { border-color:#607086; background:#293543; }
+.finance-app.theme-dark .dropdown-select-menu { border-color:var(--line); background:var(--surface); box-shadow:0 16px 34px #00000052; }
+.finance-app.theme-dark .dropdown-select-option.is-selected.is-active { border-color:#3a4c61; background:#263649; }
+.finance-app .workspace-panel:has(.dropdown-select),
+.finance-app .settings-panel:has(.dropdown-select) { overflow:visible!important; }
+.finance-app .dropdown-select-trigger { color:#17202f; background-color:#fff; }
+.finance-app .dropdown-select-trigger .is-placeholder,
+.finance-app .dropdown-select-option { color:#687385; }
+.finance-app .dropdown-select-menu { color:#17202f; background-color:#fff!important; }
+.finance-app .dropdown-select-option:hover,
+.finance-app .dropdown-select-option.is-active { color:#17202f; background-color:#f3f5f8; }
+.finance-app.theme-dark .dropdown-select-trigger { color:#e7edf4; background-color:#232e3b; }
+.finance-app.theme-dark .dropdown-select-trigger .is-placeholder,
+.finance-app.theme-dark .dropdown-select-option { color:#b4bfcc; }
+.finance-app.theme-dark .dropdown-select-menu { color:#e7edf4; background-color:#1c2530!important; }
+.finance-app.theme-dark .dropdown-select-option:hover,
+.finance-app.theme-dark .dropdown-select-option.is-active { color:#e7edf4; background-color:#29384a; }
+@media(prefers-reduced-motion:reduce) { .dropdown-select-menu,.dropdown-select-trigger svg { animation:none; transition:none; } }
+
+/* Sheet content is rendered in a body-level portal, outside .finance-app. */
+.dropdown-select-trigger { border-color:#e6e8ec; color:#17202f; background-color:#fff; }
+.dropdown-select-trigger .is-placeholder,
+.dropdown-select-option { color:#687385; }
+.dropdown-select-menu { color:#17202f; background-color:#fff; }
+.dropdown-select-option:hover,
+.dropdown-select-option.is-active { color:#17202f; background-color:#f3f5f8; }
+
+html.theme-dark .dropdown-select-trigger { border-color:#344150; color:#e7edf4; background-color:#232e3b; }
+html.theme-dark .dropdown-select-trigger .is-placeholder,
+html.theme-dark .dropdown-select-option { color:#b4bfcc; }
+html.theme-dark .dropdown-select-menu { border-color:#344150; color:#e7edf4; background-color:#1c2530; box-shadow:0 16px 34px #00000052; }
+html.theme-dark .dropdown-select-option:hover,
+html.theme-dark .dropdown-select-option.is-active { color:#e7edf4; background-color:#29384a; }
+
+/* Shared MoneyBook primary: the same green identity across Web, Lite and sheet portals. */
+:root {
+  --primary:#174c3c;
+  --primary-foreground:#f7fbf7;
+  --primary-hover:#226149;
+}
+html.theme-dark {
+  --primary:#83c89d;
+  --primary-foreground:#18212b;
+  --primary-hover:#a1dbb6;
+}
+.finance-app {
+  --primary:#174c3c;
+  --primary-foreground:#f7fbf7;
+  --primary-hover:#226149;
+  --accent:#174c3c;
+  --accent-soft:#e6f0e9;
+}
+.finance-app.theme-dark {
+  --primary:#83c89d;
+  --primary-foreground:#18212b;
+  --primary-hover:#a1dbb6;
+  --accent:#83c89d;
+  --accent-soft:#243a31;
+}
+.finance-app.theme-dark .metric-primary { border-color:#365b49; background:#243a31; }
+.finance-app .nav-link.active { border-color:#cce2d4; }
+.finance-app.theme-dark .nav-link.active { border-color:#365b49; background:var(--accent-soft); }
+.finance-app .settings-switch input:checked { border-color:var(--primary); background:var(--primary); }
+.finance-app .settings-check input,.finance-app .defined-account-row input { accent-color:var(--primary); }
+.finance-app.theme-dark .settings-switch input:checked { border-color:var(--primary); background:var(--primary); }
+.finance-app .workspace-page { --ws-blue:var(--primary); }
+.finance-app.theme-dark .workspace-page { --ws-blue:var(--primary); }
+.finance-app .workspace-page .sheet-trigger,
+.finance-app .workspace-form>button[type=submit] { color:var(--primary-foreground); background:var(--primary); }
+.finance-app .workspace-page .sheet-trigger:hover,
+.finance-app .workspace-form>button[type=submit]:hover { color:var(--primary-foreground); background:var(--primary-hover); }
+.finance-app.theme-dark .workspace-page .sheet-trigger,
+.finance-app.theme-dark .workspace-form>button[type=submit] { border-color:var(--primary); color:var(--primary-foreground); background:var(--primary); }
+.finance-app.theme-dark .workspace-page .sheet-trigger:hover,
+.finance-app.theme-dark .workspace-form>button[type=submit]:hover { border-color:var(--primary-hover); color:var(--primary-foreground); background:var(--primary-hover); }
+.sheet-body form > button[type="submit"],
+.sheet-body form > .primary,
+.sheet-body form > div:has(> .primary) > .primary { color:var(--primary-foreground); background:var(--primary); }
+.sheet-body form > button[type="submit"]:hover,
+.sheet-body form > .primary:hover,
+.sheet-body form > div:has(> .primary) > .primary:hover { color:var(--primary-foreground); background:var(--primary-hover); }
+html.theme-dark .sheet-body form > button[type="submit"],
+html.theme-dark .sheet-body form > .primary,
+html.theme-dark .sheet-body form > div:has(> .primary) > .primary { color:var(--primary-foreground); background:var(--primary); }
+html.theme-dark .sheet-body form > button[type="submit"]:hover,
+html.theme-dark .sheet-body form > .primary:hover,
+html.theme-dark .sheet-body form > div:has(> .primary) > .primary:hover { color:var(--primary-foreground); background:var(--primary-hover); }
+.primary { color:var(--primary-foreground); background:var(--primary); }
+.primary:hover { color:var(--primary-foreground); background:var(--primary-hover); }
+html.theme-dark .primary { color:var(--primary-foreground); background:var(--primary); }
+html.theme-dark .primary:hover { color:var(--primary-foreground); background:var(--primary-hover); }
+.auth-clerk-primary { background:var(--primary)!important; color:var(--primary-foreground)!important; }
+.landing-brand>span,.landing-nav-cta,.landing-primary,.landing-loading-mark { background:var(--primary); }
+.landing-nav-cta:hover,.landing-primary:hover { background:var(--primary-hover); }
+.landing-preview-card--primary { border-color:var(--primary); background:var(--primary); }
+.landing-secondary:hover,.landing-signin:hover { color:var(--primary); }
+.auth-story,.metric-primary { border-color:var(--primary); background:var(--primary); }
 

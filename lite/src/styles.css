@@ -930,3 +930,50 @@ html[data-theme="dark"] .account-skeleton-tile>span>i{
   background:#2a3542;
   animation-name:dark-skeleton-pulse
 }
+
+/* Match the Web app's primary action palette in both appearances. */
+:root{
+  --primary:#174c3c;
+  --primary-foreground:#f7fbf7;
+  --primary-hover:#226149
+}
+html[data-theme="dark"]{
+  --primary:#83c89d;
+  --primary-foreground:#18212b;
+  --primary-hover:#a1dbb6;
+  --accent:var(--primary);
+  --accent-soft:#243a31
+}
+.dialog-button.primary,.auth-form-panel .lite-clerk-primary{
+  color:var(--primary-foreground);
+  background:var(--primary)
+}
+.dialog-button.primary:hover:not(:disabled){background:var(--primary-hover)}
+html[data-theme="dark"] .primary-button,
+html[data-theme="dark"] .submit-button,
+html[data-theme="dark"] .dialog-button.primary,
+html[data-theme="dark"] .lite-clerk-primary,
+html[data-theme="dark"] .auth-form-panel .lite-clerk-primary{
+  color:var(--primary-foreground);
+  background:var(--primary)
+}
+html[data-theme="dark"] .primary-button:hover:not(:disabled),
+html[data-theme="dark"] .submit-button:hover:not(:disabled),
+html[data-theme="dark"] .dialog-button.primary:hover:not(:disabled){
+  color:var(--primary-foreground);
+  background:var(--primary-hover)
+}
+html[data-theme="dark"] .primary-button:active:not(:disabled),
+html[data-theme="dark"] .submit-button:active:not(:disabled){
+  color:var(--primary-foreground);
+  background:var(--primary)
+}
+html[data-theme="dark"] .primary-button:disabled,
+html[data-theme="dark"] .submit-button:disabled{
+  color:#a9b4c2;
+  background:#293441
+}
+html[data-theme="dark"] .bottom-nav .nav-add>span:first-child{
+  color:var(--primary-foreground);
+  background:var(--primary)
+}

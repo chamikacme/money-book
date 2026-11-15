@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { ArrowDownLeft, ArrowUpRight, CircleHelp, Plus, type LucideIcon } from "lucide-react";
 import { PageActionsContext, PageFrame } from "./page-frame";
 import { Sheet, SheetTrigger } from "./ui/sheet-form";
+import { DropdownSelect } from "./ui/dropdown-select";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 
@@ -64,10 +65,10 @@ export const SUPPORTED_CURRENCIES = [
 
 export function CurrencySelect({ value, onChange, ariaLabel }: { value: string; onChange: (value: string) => void; ariaLabel?: string }) {
   const isSupported = SUPPORTED_CURRENCIES.some((currency) => currency.code === value);
-  return <select aria-label={ariaLabel} value={value} onChange={(event) => onChange(event.target.value)}>
+  return <DropdownSelect aria-label={ariaLabel} value={value} onChange={(event) => onChange(event.target.value)}>
     {!isSupported && value && <option value={value}>{value} · saved currency</option>}
     {SUPPORTED_CURRENCIES.map(({ code, name }) => <option key={code} value={code}>{code} · {name}</option>)}
-  </select>;
+  </DropdownSelect>;
 }
 
 export function ErrorNotice({ message }: { message?: string | null }) {
