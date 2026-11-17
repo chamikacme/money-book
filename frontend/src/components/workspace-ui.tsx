@@ -51,7 +51,7 @@ export function Money({ minor, currency = DEFAULT_CURRENCY, signed = false, tone
 }
 
 export function FormField({ label, children, hint }: { label: string; children: ReactNode; hint?: string }) {
-  return <label className="workspace-field"><span>{label}</span>{children}{hint && <small>{hint}</small>}</label>;
+  return <label className="workspace-field grid gap-[6px] text-[10px] font-bold text-[var(--dropdown-muted)]"><span>{label}</span>{children}{hint && <small>{hint}</small>}</label>;
 }
 
 export const DEFAULT_CURRENCY = "LKR";
@@ -65,7 +65,7 @@ export const SUPPORTED_CURRENCIES = [
 
 export function CurrencySelect({ value, onChange, ariaLabel }: { value: string; onChange: (value: string) => void; ariaLabel?: string }) {
   const isSupported = SUPPORTED_CURRENCIES.some((currency) => currency.code === value);
-  return <DropdownSelect aria-label={ariaLabel} value={value} onChange={(event) => onChange(event.target.value)}>
+  return <DropdownSelect className="min-[761px]:w-[174px]" aria-label={ariaLabel} value={value} onChange={(event) => onChange(event.target.value)}>
     {!isSupported && value && <option value={value}>{value} · saved currency</option>}
     {SUPPORTED_CURRENCIES.map(({ code, name }) => <option key={code} value={code}>{code} · {name}</option>)}
   </DropdownSelect>;
